@@ -1,0 +1,153 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #0e1016;
+}
+
+.container {
+    max-width: 1000px;
+    width: 95%;
+    overflow: hidden;
+}
+
+.slider-wapper {
+    position: relative;
+}
+
+.slider-wapper .image-list {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 2rem;
+    font-size: 0;
+    overflow-y: auto;
+    scroll-snap-type: mandatory;
+    scrollbar-width: none;
+    margin-bottom: 20px;
+}
+
+.slider-wapper .image-list::-webkit-scrollbar {
+    display: none;
+}
+
+.imagen-item {
+    width: 300px;
+    height: 500px;
+    object-fit: cover;
+}
+
+.slider-scrolbar {
+    height: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    transition: height 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.scrollbar-thumb:active {
+    cursor: grabbing;
+    height: 4px;
+    /* top: -2px; */
+}
+
+.slider-scrolbar:hover .scrollbal-track {
+    height: 3px;
+}
+
+.scrollbal-track {
+    height: 2px;
+    width: 100%;
+    background-color: #ccc;
+    position: relative;
+    border-radius: 0.5em;
+}
+
+.scrollbar-thumb {
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    background-color: #000;
+    border-radius: inherit;
+    cursor: grab;
+}
+
+.scrollbar-thumb::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -10px;
+    bottom: -10px;
+}
+
+.slider-wapper button {
+    height: 40px;
+    width: 40px;
+    color: #fff;
+    background-color: #000;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+}
+
+.slider-wapper button:hover {
+    background-color: #0e1016;
+}
+
+.slider-wapper button.prev {
+    left: 10px;
+    display: none;
+}
+
+.slider-wapper button.next {
+    right: 10px;
+}
+
+@media(max-width: 700px) {
+
+    .slider-wapper button.prev {
+        left: 10px;
+        opacity: .4;
+    }
+
+    .slider-wapper button.next {
+        right: 10px;
+        opacity: .4;
+    }
+}
+
+@media (max-width: 1000px) {
+    .slider-wapper button {
+        display: none;
+    }
+
+    .slider-wapper .image-list {
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    .slider-wapper .image-list .imagen-item {
+        width: 280px;
+        height: 300px;
+    }
+
+    .slider-wapper .scrollbar-thumb {
+        width: 20%;
+    }
+}
